@@ -1,0 +1,20 @@
+syntax = "proto3";
+package models;
+
+option go_package = "grpc-demo/models/models";
+
+import "google/protobuf/timestamp.proto";
+
+service Greeter {
+    rpc SayHiToServer (SayHiToServerRequest) returns (SayHiToServerResponse) {}
+}
+
+message SayHiToServerRequest {
+    string name = 1;
+}
+
+message SayHiToServerResponse {
+    repeated string greetings = 1;
+    google.protobuf.Timestamp time = 2;
+    int32 luck = 3;
+}
