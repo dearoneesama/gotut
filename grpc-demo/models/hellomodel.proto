@@ -4,9 +4,15 @@ package models;
 option go_package = "grpc-demo/models/models";
 
 import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
 
 service Greeter {
-    rpc SayHiToServer (SayHiToServerRequest) returns (SayHiToServerResponse) {}
+    rpc SayHiToServer (SayHiToServerRequest) returns (SayHiToServerResponse) {
+        option (google.api.http) = {
+            post: "/greeter/sayhitoserver"
+            body: "*"
+        };
+    }
 }
 
 message SayHiToServerRequest {
